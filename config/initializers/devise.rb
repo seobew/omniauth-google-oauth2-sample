@@ -264,5 +264,9 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   #config.omniauth :google_oauth2, "785067758940-8gun8el40oqekmgs820agl7d3o8rd6p2.apps.googleusercontent.com", "bilT9D986mRxckyAho7xnEfC", { client_options: { ssl: { ca_path: "/usr/local/etc/openssl" } } }
-  config.omniauth :google_oauth2, "785067758940-8gun8el40oqekmgs820agl7d3o8rd6p2.apps.googleusercontent.com", "bilT9D986mRxckyAho7xnEfC", { access_type: "offline", approval_prompt: ""}
+  #config.omniauth :google_oauth2, "785067758940-8gun8el40oqekmgs820agl7d3o8rd6p2.apps.googleusercontent.com", "bilT9D986mRxckyAho7xnEfC", { access_type: "offline", approval_prompt: ""},
+  config.omniauth :google_oauth2, "785067758940-8gun8el40oqekmgs820agl7d3o8rd6p2.apps.googleusercontent.com", "bilT9D986mRxckyAho7xnEfC",
+    {
+      scope: "https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/userinfo.profile"
+  }
 end

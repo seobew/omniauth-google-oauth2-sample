@@ -6,15 +6,19 @@ class User < ActiveRecord::Base
      :recoverable, :rememberable, :trackable, :validatable
   def self.from_omniauth(access_token, signed_in_resource=nil)
     data = access_token.info
+    credentials = access_token.credentials
     user = User.where(:email => data["email"]).first
 
     # Uncomment the section below if you want users to be created if they don't exist
      unless user
          user = User.create(name: data["name"],
             email: data["email"],
-            password: Devise.friendly_token[0,20]
+            password: Devise.friendly_token[0,20],
+            token: credentials.token,
+            refresh_token: credentials.refresh_token
          )
      end
+     #user.get_google_contacts
     user
   end
 #  def self.from_omniauth(auth)
